@@ -7,13 +7,21 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, Storyboarded {
+    weak var coordinator: MainCoordinator?
+    @IBOutlet weak var segmentControl: UISegmentedControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
 
-
+    @IBAction func firstTap(_ sender: Any) {
+        coordinator?.toFirstVC()
+    }
+    
+    @IBAction func secondTap(_ sender: Any) {
+        coordinator?.toSecondVC(product: segmentControl.selectedSegmentIndex)
+    }
 }
 
